@@ -3,6 +3,7 @@ import os
 import tempfile
 from pathlib import Path
 
+from main import ensure_dirs
 from model.config import AppConfig
 
 
@@ -60,3 +61,19 @@ class TestAppConfig(unittest.TestCase):
 
         # Теперь проверяем, что файлы есть
         self.assertTrue(AppConfig.validate_input_files())
+
+    def test_ensure_dirs(self):
+        """Тест создания директорий"""
+        # Удаляем директории если существуют
+        if AppConfig.INPUT_DIR.exists():
+            AppConfig.INPUT_DIR.rmdir()
+        if AppConfig.OUTPUT_DIR.exists():
+            AppConfig.OUTPUT_DIR.rmdir()
+
+        # Проверяем создание
+        ensure_dirs()
+        self.assertTrue(AppConfig.INPUT_DIR.exists())
+        self.assertTrue(AppConfig.OUTPUT_DIR.exists())
+
+        # Проверяем повторный вызов (должен работать с exist_ok=True)
+        ensure_dirs()  # Не должно вызывать ошибок
