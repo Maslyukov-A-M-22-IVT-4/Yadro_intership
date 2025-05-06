@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<XMI>
+    <Class name="BTS" isRoot="true">
+        <Attribute name="id" type="uint32"/>
+        <Attribute name="name" type="string"/>
+    </Class>
+
+    <Class name="RU">
+        <Attribute name="id" type="uint32"/>
+        <Attribute name="ipv4Address" type="string"/>
+    </Class>
+
+    <Aggregation source="RU" target="BTS" sourceMultiplicity="0..42"/>
+</XMI>

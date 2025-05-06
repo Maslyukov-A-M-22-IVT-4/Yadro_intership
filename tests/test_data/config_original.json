@@ -1,0 +1,6 @@
+{
+    "networkName": "TestNetwork",
+    "baseId": 1000,
+    "enableMetrics": false,
+    "russianMode": true
+}

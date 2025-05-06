@@ -1,0 +1,7 @@
+{
+    "networkName": "UpdatedNetwork",
+    "baseId": 1001,
+    "enableMetrics": true,
+    "newParam": "value",
+    "russianMode": false
+}
