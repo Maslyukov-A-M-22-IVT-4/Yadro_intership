@@ -59,11 +59,21 @@ def setup_logging():
 def ensure_dirs():
     """Создание директорий если их нет"""
     try:
-        AppConfig.INPUT_DIR.mkdir(exist_ok=True)
-        AppConfig.OUTPUT_DIR.mkdir(exist_ok=True)
+        AppConfig.INPUT_DIR.mkdir(parents=True, exist_ok=True)
+        AppConfig.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        logging.info(f"Директории созданы/проверены: {AppConfig.INPUT_DIR}, {AppConfig.OUTPUT_DIR}")
+    except PermissionError as e:
+        error_msg = f"Нет прав на создание директорий: {e}"
+        logging.error(error_msg)
+        raise PermissionError(error_msg) from e
+    except OSError as e:
+        error_msg = f"Ошибка файловой системы при создании директорий: {e}"
+        logging.error(error_msg)
+        raise OSError(error_msg) from e
     except Exception as e:
-        logging.error(f"Ошибка создания директорий: {e}")
-        raise
+        error_msg = f"Неожиданная ошибка при создании директорий: {e}"
+        logging.error(error_msg)
+        raise RuntimeError(error_msg) from e
 
 
 def main():
