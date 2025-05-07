@@ -16,7 +16,7 @@
 1. Склонируйте репозиторий:
 
 ```bash
-git clone https://github.com/yourusername/Yadro_intership.git
+git clone https://github.com/Maslyukov-A-M-22-IVT-4/Yadro_intership.git
 cd Yadro_intership
 ```
 
